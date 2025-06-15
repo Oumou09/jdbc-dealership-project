@@ -5,6 +5,7 @@ import com.pluralsight.dealership.models.LeaseContract;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LeaseDao {
@@ -16,5 +17,29 @@ public class LeaseDao {
 
     public void addLeaseContract(LeaseContract leaseContract) {
         // TODO: Implement the logic to add a lease contract
+
+        try(Connection connection = dataSource.getConnection();
+        PreparedStatement leaseStatement = connection.prepareStatement("""
+                        INSERT INTO lease_contracts (VIN, lease_start, lease_end, monthly_payment)
+                        VALUES (?, ?, ?, ?)
+                        """,
+                PreparedStatement.RETURN_GENERATED_KEYS )){
+            leaseStatement.setString(1, leaseContract.getVin());
+            leaseStatement.setDate(2, java.sql.Date.valueOf(leaseContract.getLeaseStart())); // this value of help sql workbench understand how to formate the date making it easier for sql to understand
+            leaseStatement.setDate(2, java.sql.Date.valueOf(leaseContract.getLeaseEnd())); // this value of help sql workbench understand how to formate the date making it easier for sql to understand
+            leaseStatement.setDouble(3,leaseContract.getMonthlyPayment());
+            leaseStatement.executeUpdate();
+
+            try(ResultSet generateKeys = leaseStatement.getGeneratedKeys()){
+                if (generateKeys.next()){
+                    int contractID = generateKeys.getInt(1);
+                    System.out.println("New Contract ID: " + contractID);
+
+                }
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
