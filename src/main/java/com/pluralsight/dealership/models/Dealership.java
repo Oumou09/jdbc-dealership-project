@@ -47,11 +47,10 @@ public class Dealership {
 
     @Override
     public String toString() {
-        return "Dealership{" +
-                "dealershipId=" + dealershipId +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        return "Dealership" +
+                "dealershipId: " + dealershipId +
+                ", name: '" + name + '\'' +
+                ", address: '" + address + '\'' +
+                ", phone: '" + phone + '\'';
     }
 }
