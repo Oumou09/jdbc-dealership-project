@@ -22,38 +22,23 @@ public class InventoryDao {
         // TODO: Implement the logic to add a vehicle to the inventory
 
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement vehicleStatement = connection.prepareStatement("INSERT INTO inventory (dealership_id, VIN) VALUES (?, ?)")){
-       // ResultSet resultSet = vehicleStatement.executeQuery();
+             PreparedStatement vehicleStatement = connection.prepareStatement("INSERT INTO inventory (dealership_id, VIN) VALUES (?, ?)")) {
 
             vehicleStatement.setInt(1, dealershipId);
             vehicleStatement.setString(2, vin);
             vehicleStatement.executeUpdate();
 
-//            if(resultSet.next()) {
-//                do {
-//                    String vin = resultSet.getString(1);
-//                    int dealershipID = resultSet.getDouble(2);
-//
-//                    inventory.add()
-//
-//                }while(resultSet.next());
-//
-//            }else {
-//                System.out.println("No Matches");
 
-//            }
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void removeVehicleFromInventory(String vin) {
         // TODO: Implement the logic to remove a vehicle from the inventory
         try(Connection connection = dataSource.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM inventory WHERE inventory = (?)")){
-            preparedStatement.setString(2, vin);
+            preparedStatement.setString(1, vin);
             preparedStatement.executeUpdate();
 
         }catch (Exception ex) {

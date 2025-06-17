@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class VehicleDao {
     private DataSource dataSource;
@@ -16,10 +17,36 @@ public class VehicleDao {
 
     public void addVehicle(Vehicle vehicle) {
         // TODO: Implement the logic to add a vehicle
+        try(Connection connection = dataSource.getConnection();
+        PreparedStatement addVehicleStatement = connection.prepareStatement("""
+                INSERT INTO vehicles (VIN, make, model, year, SOLD, color, vehicleType, odometer, price) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? )""")) {
+            addVehicleStatement.setString(1, vehicle.getVin());
+            addVehicleStatement.setString(2, vehicle.getMake());
+            addVehicleStatement.setString(3, vehicle.getModel());
+            addVehicleStatement.setInt(4, vehicle.getYear());
+            addVehicleStatement.setBoolean(5, vehicle.isSold());
+            addVehicleStatement.setString(6, vehicle.getColor());
+            addVehicleStatement.setString(7, vehicle.getVehicleType());
+            addVehicleStatement.setInt(8, vehicle.getOdometer());
+            addVehicleStatement.setDouble(9, vehicle.getPrice());
+            addVehicleStatement.executeUpdate();
+
+        }catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void removeVehicle(String VIN) {
         // TODO: Implement the logic to remove a vehicle
+        try(Connection connection = dataSource.getConnection();
+        PreparedStatement removeStatement = connection.prepareStatement("DELETE FROM vehicle WHERE VIN = ?")){
+            removeStatement.setString(1, VIN);
+            removeStatement.executeUpdate();
+
+        }catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public List<Vehicle> searchByPriceRange(double minPrice, double maxPrice) {
