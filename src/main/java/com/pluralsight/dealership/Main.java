@@ -22,7 +22,7 @@ public class Main {
         String password = args[1];
 
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/car_dealership");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/R_car_dealership");
 
         dataSource.setUsername(username);
         dataSource.setPassword(password);

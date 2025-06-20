@@ -55,10 +55,6 @@ public class SalesContract {
 
     @Override
     public String toString() {
-        return "SalesContract: " +
-                "contractId: " + contractId +
-                ", vin: '" + vin + '\'' +
-                ", saleDate: " + saleDate +
-                ", price: " + price;
+        return "SalesContract: " + contractId + vin + '\'' + saleDate + price;
     }
 }

@@ -66,11 +66,6 @@ public class LeaseContract {
 
     @Override
     public String toString() {
-        return "LeaseContract: " +
-                "contractId: " + contractId +
-                ", vin: '" + vin + '\'' +
-                ", leaseStart: " + leaseStart +
-                ", leaseEnd: " + leaseEnd +
-                ", monthlyPayment: " + monthlyPayment;
+        return " LeaseContract: " + contractId + vin + '\'' + leaseStart + leaseEnd + monthlyPayment;
     }
 }

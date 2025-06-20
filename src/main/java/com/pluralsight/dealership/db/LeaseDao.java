@@ -16,7 +16,6 @@ public class LeaseDao {
     }
 
     public void addLeaseContract(LeaseContract leaseContract) {
-        // TODO: Implement the logic to add a lease contract
 
         try(Connection connection = dataSource.getConnection();
         PreparedStatement leaseStatement = connection.prepareStatement("""
@@ -26,8 +25,8 @@ public class LeaseDao {
                 PreparedStatement.RETURN_GENERATED_KEYS )){
             leaseStatement.setString(1, leaseContract.getVin());
             leaseStatement.setDate(2, java.sql.Date.valueOf(leaseContract.getLeaseStart())); // this value of help sql workbench understand how to formate the date making it easier for sql to understand
-            leaseStatement.setDate(2, java.sql.Date.valueOf(leaseContract.getLeaseEnd())); // this value of help sql workbench understand how to formate the date making it easier for sql to understand
-            leaseStatement.setDouble(3,leaseContract.getMonthlyPayment());
+            leaseStatement.setDate(3, java.sql.Date.valueOf(leaseContract.getLeaseEnd())); // this value of help sql workbench understand how to formate the date making it easier for sql to understand
+            leaseStatement.setDouble(4,leaseContract.getMonthlyPayment());
             leaseStatement.executeUpdate();
 
             try(ResultSet generateKeys = leaseStatement.getGeneratedKeys()){
