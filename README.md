@@ -1,22 +1,20 @@
-# Project Title
+JDBC-Dealership Project
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+This Java console application is designed to manage a car dealership’s inventory and sales operations. Its primary purpose is to help dealership staff efficiently track vehicles, maintain inventory records, and process sales contracts.
 
-![Class Diagram](path/to/your/class_diagram.png)
+Intended for dealership managers and sales personnel, the application provides core functionalities such as adding and removing vehicles from inventory, recording sales contracts with customer and vehicle details, and ensuring data integrity through validation and relational constraints.
+
+By automating inventory management and sales tracking, the application aims to streamline dealership workflows, reduce manual errors, and provide a reliable system for monitoring vehicle availability and sales history
+
+
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
-
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
-
-## Setup
-
-Instructions on how to set up and run the project using IntelliJ IDEA.
-
+- As a user, I want to add new vehicles to the inventory so I can keep the system updated with the latest available cars for sale.
+- As a user, I want to record sales contracts quickly and accurately so I can ensure every sale is properly tracked.
+- 
 ### Prerequisites
 
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed, which you can download from [here](https://www.jetbrains.com/idea/download/).
@@ -30,42 +28,48 @@ Follow these steps to get your application running within IntelliJ IDEA:
 2. Select "Open" and navigate to the directory where you cloned or downloaded the project.
 3. After the project opens, wait for IntelliJ to index the files and set up the project.
 4. Find the main class with the `public static void main(String[] args)` method.
-5. Right-click on the file and select 'Run 'YourMainClassName.main()'' to start the application.
+5. Right-click on the file and select 'Run 'Main.java()'' to start the application.
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
-
-## Demo
-
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
+- Java: 17
+- MySQL workbench
 
 ## Future Work
 
 Outline potential future enhancements or functionalities you might consider adding:
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
+- Adding functionality to create, update, and view customer profiles. 
+- Link customers to sales contracts for full transaction history.
+
+
+##  Reflection: Interesting Code I Worked On
+
+Inserting Sales Contracts with Auto-Generated Keys implemented a method to insert new sales contracts into the database using PreparedStatement.RETURN_GENERATED_KEYS. 
+
+This allowed me to retrieve the auto-generated contract ID after insertion and link it back to the Java object. It taught me how to manage database connections, safely insert data, and retrieve generated primary keys — a technique commonly used in real-world applications.
+
+Managing Foreign Key Constraints and Error Handling
+
+While inserting or deleting records, I encountered several SQL exceptions such as:
+
+SQLIntegrityConstraintViolationException – when trying to insert a contract for a VIN that didn’t exist in the vehicles table.
+
+MysqlDataTruncation – when inserting a VIN longer than the allowed limit.
+
+These situations pushed me to improve my understanding of relational database constraints, data validation, and robust error handling to maintain data integrity.
 
 ## Resources
 
-List resources such as tutorials, articles, or documentation that helped you during the project.
-
-- [Java Programming Tutorial](https://www.example.com)
+- Potato Sensei
+- https://github.com/RayMaroun/yearup-spring-section-10-2025/tree/master
 - [Effective Java](https://www.example.com)
 
 ## Team Members
 
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- **Oumou Diallo** - Developer.
 
 ## Thanks
 
-Express gratitude towards those who provided help, guidance, or resources:
-
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
+- Thank you to Potato sensei, Raymond and my peers for all their continuous support and guidance.
  
