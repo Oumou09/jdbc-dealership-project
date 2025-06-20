@@ -14,7 +14,6 @@ By automating inventory management and sales tracking, the application aims to s
 
 - As a user, I want to add new vehicles to the inventory so I can keep the system updated with the latest available cars for sale.
 - As a user, I want to record sales contracts quickly and accurately so I can ensure every sale is properly tracked.
-- 
 ### Prerequisites
 
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed, which you can download from [here](https://www.jetbrains.com/idea/download/).
@@ -28,7 +27,7 @@ Follow these steps to get your application running within IntelliJ IDEA:
 2. Select "Open" and navigate to the directory where you cloned or downloaded the project.
 3. After the project opens, wait for IntelliJ to index the files and set up the project.
 4. Find the main class with the `public static void main(String[] args)` method.
-5. Right-click on the file and select 'Run 'Main.java()'' to start the application.
+5. Right-click on the file and select run 'Main.java()'' to start the application.
 
 ## Technologies Used
 
@@ -49,9 +48,7 @@ Inserting Sales Contracts with Auto-Generated Keys implemented a method to inser
 
 This allowed me to retrieve the auto-generated contract ID after insertion and link it back to the Java object. It taught me how to manage database connections, safely insert data, and retrieve generated primary keys — a technique commonly used in real-world applications.
 
-Managing Foreign Key Constraints and Error Handling
-
-While inserting or deleting records, I encountered several SQL exceptions such as:
+Managing Foreign Key Constraints and Error Handling while inserting or deleting records, I encountered several SQL exceptions such as:
 
 SQLIntegrityConstraintViolationException – when trying to insert a contract for a VIN that didn’t exist in the vehicles table.
 
